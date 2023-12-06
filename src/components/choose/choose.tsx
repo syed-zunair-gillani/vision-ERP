@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import React from 'react';
 
 const cardsData = [
@@ -49,18 +50,19 @@ const cardsData = [
 function Choose() {
   return (
     <div className='container mx-auto px-4'>
-    <div className='text-[#02153a] text-center lg:mt-16 py-10'>
-      <h2 className='text-3xl lg:text-5xl font-semibold mb-4'>Why Choose Us</h2>
+    <div className='text-[#02153a] text-center'>
+      <h2 className='text-3xl lg:text-[42px] font-bold mb-4'>Why Choose Us</h2>
       <p className='text-base lg:text-lg'>
         At Vision ERP, we offer more than just solutions; we offer a transformative partnership.
       </p>
     </div>
-    <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 '>
-      {cardsData.map((card) => (
-        <div key={card.id} className='bg-white  text-[#3F3F3F] rounded-3xl shadow-xl p-4 hover:bg-gradient transition-all duration-300'>
-          <img src={card.image} alt={card.name} className='w-[47px] h-[47px] mb-4 ' />
+    <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 mt-10'>
+      {cardsData.map((card,idx) => (
+        <div key={card.id} className={
+          ` g2 bg-white text-[#3F3F3F] bx rounded-[30px] p-5 px-6`}>
+          <Image src={card.image} alt={card.name} width={56} height={56} className='mb-4' />
           <h3 className='font-semibold mb-2 text-lg md:text-xl'>{card.name}</h3>
-          <p className='text-sm lg:text-base'>{card.paragraph}</p>
+          <p className='text-sm lg:text-[15px] font-light'>{card.paragraph}</p>
         </div>
       ))}
     </div>
