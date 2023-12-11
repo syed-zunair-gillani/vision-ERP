@@ -43,5 +43,21 @@ body, html {
   font-family:Montserrat ;
 }
 
+.bredcrum span{
+  color: #008FD4;
+}
+.shadow1{
+  box-shadow: 20px 30px 80px -5px rgba(123, 77, 8, 0.02);
+}
+.g3{
+  background: rgb(224,244,255);
+  background: linear-gradient(171deg, rgba(224,244,255,1) 59%, rgba(219,204,252,1) 100%);
+}
 
-
+@media (max-width: 768px){
+  .button{
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+  }
+}

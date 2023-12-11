@@ -6,7 +6,7 @@ import Button from '../UI/button';
 
 function Main() {
   return (
-    <div className='bg-[#EEFAFF] w-full h-auto'>
+    <div className='g3 w-full h-auto pt-28 -mt-24'>
       <div className='container mx-auto px-4'>
        <div className='grid lg:grid-cols-2 md:grid-cols-2'>
         <div className='w-full  '>

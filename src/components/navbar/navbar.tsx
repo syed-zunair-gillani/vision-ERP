@@ -14,8 +14,8 @@ function Navbar() {
   };
 
   return (
-    <div className='bg-[#EEFAFF] w-full h-auto py-4 font-[Montserrat]'>
-      <div className='container mx-auto bg-white py-2 px-3 items-center rounded-lg lg:shadow-lg'>
+    <div className='w-full h-auto py-4 font-[Montserrat] px-4 z-50'>
+      <div className='container mx-auto bg-white py-2 px-3 z-50 relative items-center rounded-lg lg:shadow-lg'>
         <div className='flex justify-between items-center '>
           <Link href='/'>
             <Image src='/image/logo.png' alt='Rehab Fit' width={450} height={650} className='w-12' />
@@ -28,7 +28,7 @@ function Navbar() {
                     <ul className='hidden'>
                       {
                         nav?.subNav?.map((subItem, id)=>(
-                            <li key={id}><Link href={subItem.link}>{subItem.name}</Link></li>
+                            <li key={id} className='cursor-pointer'><Link href={subItem.link}>{subItem.name}</Link></li>
                         ))
                       }
                     </ul>
@@ -42,13 +42,13 @@ function Navbar() {
           
           
           <div className='lg:hidden'>
-            <button onClick={toggleMenu}>
+            <button onClick={toggleMenu} >
               {isMenuOpen ? (
-                <RxCross2 className='h-6 w-6 text-gray-900' />
+                <RxCross2 className='h-9 w-9 text-gray-900' />
               ) : (
                 <svg
                   xmlns='http://www.w3.org/2000/svg'
-                  className='h-6 w-6 text-gray-900'
+                  className='h-9 w-9 pt-1 text-gray-900'
                   fill='none'
                   viewBox='0 0 24 24'
                   stroke='currentColor'

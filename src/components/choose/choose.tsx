@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import React from 'react';
 
-const cardsData = [
+export const cardsData = [
   {
     id: 1,
     name: 'Expertise in Public Sector',
@@ -47,17 +47,17 @@ const cardsData = [
  
 ];
 
-function Choose() {
+function Choose({title,info, data, className}:any) {
   return (
-    <div className='container mx-auto px-4'>
+    <div className={`container mx-auto px-4 ${className}`}>
     <div className='text-[#02153a] text-center'>
-      <h2 className='text-3xl lg:text-[42px] font-bold mb-4'>Why Choose Us</h2>
+      <h2 className='text-3xl lg:text-[42px] font-bold mb-4'>{title}</h2>
       <p className='text-base lg:text-lg'>
-        At Vision ERP, we offer more than just solutions; we offer a transformative partnership.
+        {info}
       </p>
     </div>
     <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 mt-10'>
-      {cardsData.map((card,idx) => (
+      {data?.map((card:any,idx:number) => (
         <div key={card.id} className={
           ` g2 bg-white text-[#3F3F3F] bx rounded-[30px] p-5 px-6`}>
           <Image src={card.image} alt={card.name} width={56} height={56} className='mb-4' />
