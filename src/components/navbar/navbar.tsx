@@ -14,7 +14,8 @@ function Navbar() {
   };
 
   return (
-    <div className='w-full h-auto py-4 font-[Montserrat] px-4 z-50'>
+    <>
+      <div className='w-full h-auto py-4 font-[Montserrat] px-4 z-50'>
       <div className='container mx-auto bg-white py-2 px-3 z-50 relative items-center rounded-lg lg:shadow-lg'>
         <div className='flex justify-between items-center '>
           <Link href='/'>
@@ -83,14 +84,15 @@ function Navbar() {
               ))
             }
              
-              <Link href='/' className='bg-[#01253A] text-white py-2 px-4 rounded-lg flex hover:scale-105 items-center gap-2 mt-4'>
+              <button  className='bg-[#01253A] text-white py-2 px-4 rounded-lg flex hover:scale-105 items-center gap-2 mt-4'>
                 Request a Demo <IoArrowForward />
-              </Link>
+              </button>
             </div>
           </div>
         )}
       </div>
     </div>
+    </>
   );
 }
 

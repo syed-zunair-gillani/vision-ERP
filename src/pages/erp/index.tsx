@@ -3,6 +3,7 @@ import PageBanner from '@/components/main/pageBanner'
 import TwoColGrid from '@/components/twoColGrid/TwoColGrid'
 import React from 'react'
 import { faqs } from '../products'
+import Request from '@/components/modelbox/request'
 
 const ERP = () => {
      return (
@@ -32,7 +33,7 @@ const ERP = () => {
                          faqs={faqs}
                     />
                </section>
-
+               
                <TwoColGrid
                     position="left"
                     heading="Empower Your Success with Vision ERP"
