@@ -9,16 +9,19 @@ import { FaLocationDot } from "react-icons/fa6";
 import { FaPhoneVolume } from "react-icons/fa6";
 import { MdMarkEmailUnread } from "react-icons/md";
 import Speak from '../speak/speak';
+import { useRouter } from 'next/router';
 
 function Footer() {
+  const {pathname} = useRouter()
+   
   return (
     <>
       <div className='z-10 px-4'>
-        <Speak />
+        { pathname !== '/contact-us' && <Speak />}
       </div>
-      <div className='bg-[#01253A] -mt-52'>
+      <div className={`bg-[#01253A]  ${pathname !== '/contact-us' && '-mt-52'}`}>
 
-        <div className="h-auto container mx-auto px-4 w-full py-10 pb-5 pt-64 ">
+        <div className={`h-auto container mx-auto px-4 w-full py-10 pb-5 pt-28 ${pathname !== '/contact-us' && 'pt-64'}`}>
           <div className='container mx-auto px-4 grid xl:grid-cols-5 lg:grid-cols-4 border-t-[1px] sm:grid-cols-3 grid-cols-1 border-[#2e4c5f] pt-20 gap-5'>
             <div className='text-white  '>
               <Image src='/image/logo.png' alt='Rehab Fit' width={450} height={650} className='w-[102px] h-[70px] ml-6 ' />
