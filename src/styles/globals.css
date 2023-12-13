@@ -49,11 +49,17 @@ body, html {
 .shadow1{
   box-shadow: 20px 30px 80px -5px rgba(123, 77, 8, 0.02);
 }
+.shadow2:hover{
+  box-shadow: 0px 18px 35px 0px rgba(0, 0, 0, 0.12);
+}
 .g3{
   background: rgb(224,244,255);
   background: linear-gradient(171deg, rgba(224,244,255,1) 59%, rgba(219,204,252,1) 100%);
 }
 
+.g4:hover{
+  background: linear-gradient(136deg, #5ECAF3 0%, #00619D 112.53%);
+}
 @media (max-width: 768px){
   .button{
     width: 100%;

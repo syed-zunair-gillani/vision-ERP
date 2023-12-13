@@ -47,7 +47,7 @@ export const cardsData = [
 
 ];
 
-function ChooseCardTwo({ title, info, data, className }: any) {
+function ChooseCardTwo({ title, info, data, className, rounded }: any) {
   return (
     <div className={`container mx-auto px-4 ${className}`}>
       <div className='text-[#02153a] text-center'>
@@ -58,7 +58,7 @@ function ChooseCardTwo({ title, info, data, className }: any) {
       </div>
       <div className='grid grid-cols-1 sm:grid-cols-2 gap-5 mt-10'>
         {data?.map((card: any, idx: number) => (
-          <div key={card.id} className={` g2 bg-white text-[#3F3F3F] bx rounded-[30px] gap-2 md:flex p-5 px-6`}>
+          <div key={card.id} className={` g2 bg-white text-[#3F3F3F] bx rounded-[30px] gap-2 md:flex p-5 px-6 ${rounded}`}>
             <figure className='w-20'>
               <Image src={card.image} alt={card.name} width={56} height={56} className='mb-4' />
             </figure>
