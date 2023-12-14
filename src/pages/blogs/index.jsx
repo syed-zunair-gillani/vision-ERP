@@ -7,7 +7,7 @@ import { IoArrowForward } from "react-icons/io5";
 const Blogs = () => {
   return (
     <>
-      <BlogBanner />
+      <BlogBanner title="Latest Blogs & Updates" breadcrum="Blogs" />
       <section className="container mx-auto px-4 gap-4 gap-y-7 my-16 grid sm:grid-cols-2 md:grid-cols-3 ">
         {[1, 2, 3, 4, 5, 6, 7].map((item, idx) => {
           return <BlogDesign key={idx} data={item} />;
