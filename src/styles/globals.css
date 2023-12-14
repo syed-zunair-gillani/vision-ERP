@@ -67,3 +67,5 @@ body, html {
     justify-content: center;
   }
 }
+.slick-list {margin: 0 -10px;}
+.slick-slide>div {padding: 0 10px;}

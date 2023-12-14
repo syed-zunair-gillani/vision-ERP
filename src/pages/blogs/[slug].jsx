@@ -2,6 +2,7 @@ import React from 'react'
 import SingleBlogBanner from '../../components/main/singleBlogBanner'
 import Image from 'next/image'
 import AboutMe from '../../components/aboutMe/aboutMe'
+import BlogSlider from '../../components/blogSlider/blogSlider'
 
 const SlugBlog = () => {
   return (
@@ -27,6 +28,7 @@ const SlugBlog = () => {
                <p className='mt-3'>Unit4 solutions have made a real impact in the public sector, helping two police forces save £4 million annually through collaborative finance and HR strategy. The departments were struggling with multiple fragmented and overlapping systems, ranging from duty management, HR and payroll, to performance recording, training, and asset management.<br/> With data locked in silos, the disjointed data delayed decision-making and inhibited change. Unit4’s consolidated record of finance and HR data and process automation helped them deploy the right police resource to the right location, at the right time, with the right skills. Unit4 solutions have made a real impact in the public sector, helping two police forces save £4 million annually through collaborative finance and HR strategy. <br/>The departments were struggling with multiple fragmented and overlapping systems, ranging from duty management, HR and payroll, to performance recording, training, and asset management. With data locked in silos, the disjointed data delayed decision-making and inhibited change. Unit4’s consolidated record of finance and HR data and process automation helped them deploy the right police resource to the right location, at the right time, with the right skills. Unit4 solutions have made a real impact in the public sector, helping two police forces save £4 million annually through collaborative finance and HR strategy. The departments were struggling with multiple fragmented and overlapping systems, ranging from duty management, HR and payroll, to performance recording, training, and asset management.<br/> With data locked in silos, the disjointed data delayed decision-making and inhibited change. Unit4’s consolidated record of finance and HR data and process automation helped them deploy the right police resource to the right location, at the right time, with the right skills. Unit4 solutions have made a real impact in the public sector, helping two police forces save £4 million annually through collaborative finance and HR strategy. The departments were struggling with multiple fragmented and overlapping systems, ranging from duty management, HR and payroll, to performance recording, training, and asset management. With data locked in silos, the disjointed data delayed decision-making and inhibited change. Unit4’s consolidated record of finance and HR data and process automation helped them deploy the right police resource to the right location, at the right time, with the right skills.</p>
           </div>
           <AboutMe/>
+          <BlogSlider/>
     </>
   )
 }
