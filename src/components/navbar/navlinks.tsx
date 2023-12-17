@@ -5,11 +5,11 @@ export const navLinks = [
     },
     {
         name:"Services",
-        link: "/"
+        link: "/services"
     },
     {
         name:"Unit4 Cloud Migration",
-        link: "/"
+        link: "/cloud-migration"
     },
     {
         name:"Products",
@@ -26,11 +26,11 @@ export const navLinks = [
         ]
     },
     {
-        name:"Testimonials",
-        link: "/"
+        name:"Blogs",
+        link: "/blogs"
     },
     {
         name:"Contact",
-        link: "/"
+        link: "/contact-us"
     },
 ]

@@ -109,7 +109,7 @@ function Navbar() {
                   ))
                 }
 
-                <button className='bg-[#01253A] text-white py-2 px-4 rounded-lg flex hover:scale-105 items-center gap-2 mt-4'>
+                <button onClick={openModal} className='bg-[#01253A] text-white py-2 px-4 rounded-lg flex hover:scale-105 items-center gap-2 mt-4'>
                   Request a Demo <IoArrowForward />
                 </button>
               </div>

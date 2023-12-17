@@ -45,11 +45,11 @@ function Footer() {
               <h4 className='text-white font-[600] text-[19px]'>Quick Links</h4>
               <div className='text-[#BECED8] flex-col flex gap-3 mt-5'>
                 <Link href="/">Home</Link>
-                <Link href="/">Services</Link>
-                <Link href="/">Unit4 Cloud Migration</Link>
-                <Link href="/"> Products</Link>
-                <Link href="/">Testimonials</Link>
-                <Link href="/">Contact</Link>
+                <Link href="/services">Services</Link>
+                <Link href="/cloud-migration">Unit4 Cloud Migration</Link>
+                <Link href="/products"> Products</Link>
+                <Link href="/blogs">Blogs</Link>
+                <Link href="/contact-us">Contact</Link>
               </div>
             </div>
 
@@ -59,7 +59,7 @@ function Footer() {
                 <Link href="/">Careers</Link>
                 <Link href="/">Unit4</Link>
                 <Link href="/">Our Story</Link>
-                <Link href="/">Contact</Link>
+                <Link href="/contact-us">Contact</Link>
                 <Link href="/">Product</Link>
               </div>
             </div>
@@ -67,9 +67,10 @@ function Footer() {
             <div className=''>
               <h4 className='text-white font-[600] text-[19px]'>Products</h4>
               <div className='text-[#BECED8] flex-col flex gap-3 mt-5'>
-                <Link href="/">Unit4 ERP</Link>
-                <Link href="/">Unit4 FP&A</Link>
-                <Link href="/">Unit4 Talent Management</Link>
+                <Link href="/erp">Unit4 ERP</Link>
+                <Link href="/fpa">Unit4 FP&A</Link>
+                <Link href="/talent-management">Unit4 Talent Management</Link>
+                <Link href="/public-sector">Public Sector</Link>
               </div>
             </div>
 
