@@ -69,3 +69,44 @@ body, html {
 }
 .slick-list {margin: 0 -10px;}
 .slick-slide>div {padding: 0 10px;}
+
+#modelbox{
+  border-radius: 20px !important;
+  max-width: 800px;
+  width: 100%;
+  padding: 1.5rem;
+  box-shadow: 20px 20px 80px 0px rgba(7, 94, 137, 0.08);
+  max-height: 90vh;
+  overflow: auto;
+  margin: auto 0;
+}
+.ReactModal__Overlay{
+  z-index: 100000;
+}
+
+@media (max-width : 768px) {
+  #modelbox{
+    max-height: 100vh;
+  }
+}
+
+/* width */
+#modelbox::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+#modelbox::-webkit-scrollbar-track {
+  background: #ffffff00; 
+}
+ 
+/* Handle */
+#modelbox::-webkit-scrollbar-thumb {
+  background: #88888800; 
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+#modelbox::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+}
