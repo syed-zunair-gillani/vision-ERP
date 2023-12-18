@@ -1,10 +1,9 @@
 import React, { useState } from 'react'
 import Image from 'next/image'
-import Link from 'next/link'
-import { IoArrowForward } from 'react-icons/io5';
 import Button from '../UI/button';
 import { IoIosArrowDown } from "react-icons/io";
 import { IoIosArrowUp } from "react-icons/io";
+import Markdown from 'react-markdown'
 
 
 function TwoColGrid({position, heading, text1, text2, image, link, faqs, buttonText}:any) {
@@ -18,9 +17,7 @@ function TwoColGrid({position, heading, text1, text2, image, link, faqs, buttonT
         </div>
            <div className='text-[#02153a] mx-auto flex flex-col justify-center items-start'>
               <h2 className='md:leading-[48px] md:text-[42px] text-[25px] font-[700] py-3'>{heading}</h2>
-              <p className={faqs ? '' : 'mb-5'}>{text1}
-               <br /> <br />
-              {text2}</p>
+              <Markdown className={faqs ? '' : 'mb-2 markdown'}>{text1}</Markdown>
               <div className='mb-5 -mt-2'>
                   {
                      faqs?.map((faq:any,id:number)=>(

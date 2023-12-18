@@ -6,18 +6,24 @@ import Customer from '@/components/customer/logo'
 import Partnership from '@/components/customer/partnership'
 import Blog from '@/components/customer/blog'
 import TwoColGrid from '@/components/twoColGrid/TwoColGrid'
+import { GetServerSideProps } from 'next'
+import {Axios} from '@/config/Axios'
+import { baseURL } from '@/const'
+var qs = require('qs');
 
 
-export default function Home() {
+export default function Home({data}:any) {
+  console.log("🚀 ~ file: index.tsx:13 ~ Home ~ data:", data)
+  const {About, Choose_us, Customers,FPA_grid, Grid, Hero, Intel_Partnership, Offer_Title, Talent_Management, grid, offer_info} = data
+  
   return (
     <>
-      <Main />
+      <Main hero={Hero}/>
       <TwoColGrid
         position="right"
-        heading="About Vision ERP"
-        text1="We have industry specific experts who understand business functionality as well as system functionality. This helps us to understand your issues, as we have probably felt the same pain in previous careers.      "
-        text2="This enables us to put ourselves in your shoes, experience your frustrations and needs, and develop solutions which are industry specific, and are tailored to work for you      "
-        image="/image/2.png"
+        heading={About.Title}
+        text1={About?.Content.content}
+        image={`${baseURL}${About?.Image?.data?.attributes.url}`}
         link="#"
       />
       <Choose
@@ -44,3 +50,17 @@ export default function Home() {
     </>
   )
 }
+
+
+export const getServerSideProps:GetServerSideProps = (async () => {
+  const params = qs.stringify({
+    populate: ['Hero.Image', 'Hero.Button', 'About.Image', 'About.Button', 'About.Content']
+  })
+  console.log("🚀 ~ file: index.tsx:59 ~ params ~ params:", params)
+
+  const homePage = await Axios.get(`/main-page?${params}`);
+  const data = homePage.data?.data?.attributes;
+
+  return { props: { data } }
+})
+ 

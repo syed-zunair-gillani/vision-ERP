@@ -1,21 +1,20 @@
 import React from 'react';
-import Link from 'next/link';
 import Image from 'next/image';
-import { IoArrowForward } from 'react-icons/io5';
 import Button from '../UI/button';
+import { baseURL } from '@/const';
 
-function Main() {
+function Main({hero}:any) {
   return (
     <div className='g3 w-full h-auto pt-28 -mt-24'>
       <div className='container mx-auto px-4'>
        <div className='grid lg:grid-cols-2 md:grid-cols-2'>
         <div className='w-full  '>
-            <h1 className='lg:text-[55px] md:text-[45px] text-[28px]  font-[700] text-[#01253A] py-4 lg:mt-16 lg:leading-[70px]'>Empowering the Public Sector with Tailored Solutions</h1>
-            <p className='text-[18px] text-[#02153a] pb-10'>Vision ERP have a versatile and dynamic workforce who can adapt to each individual customer requirements</p>
-            <Button link="#">Get In Touch</Button>
+            <h1 className='lg:text-[55px] md:text-[45px] text-[28px]  font-[700] text-[#01253A] py-4 lg:mt-16 lg:leading-[70px]'>{hero?.title}</h1>
+            <p className='text-[18px] text-[#02153a] pb-10'>{hero?.description}</p>
+            <Button link={hero?.Button?.link || '#'}>{hero?.Button?.Name}</Button>
         </div>
         <div>
-          <Image src='/image/hero.png' alt='Rehab Fit' width={450} height={650} className=' w-full  mx-auto' />
+          <Image src={`${baseURL}${hero.Image?.data?.attributes.url}`} alt='Rehab Fit' width={450} height={650} className=' w-full  mx-auto' />
         </div>
        </div>
       </div>
