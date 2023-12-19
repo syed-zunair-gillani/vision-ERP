@@ -119,7 +119,6 @@ export const getServerSideProps: GetServerSideProps = (async () => {
       'Partnership.Content', 'Partnership.Image', 'Partnership.button',
     ]
   })
-  console.log("🚀 ~ file: index.tsx:59 ~ params ~ params:", params)
 
   const homePage = await Axios.get(`/main-page?${params}`);
   const data = homePage.data?.data?.attributes;
