@@ -1,7 +1,7 @@
 import React from 'react'
 import TwoColGrid from '../twoColGrid/TwoColGrid';
 
-function maximise() {
+function maximise({data}:any) {
   return (
     <div className='bg-[#F4FCFF] mt-24'>
 

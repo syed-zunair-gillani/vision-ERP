@@ -1,3 +1,4 @@
+import { baseURL } from '@/const';
 import Image from 'next/image';
 import React from 'react';
 
@@ -47,7 +48,7 @@ export const cardsData = [
  
 ];
 
-function Choose({title,info, data, className}:any) {
+function Choose({title, info, data, className}:any) {
   return (
     <div className={`container mx-auto px-4 ${className}`}>
     <div className='text-[#02153a] text-center'>
@@ -60,9 +61,9 @@ function Choose({title,info, data, className}:any) {
       {data?.map((card:any,idx:number) => (
         <div key={card.id} className={
           ` g2 bg-white text-[#3F3F3F] bx rounded-[30px] p-5 px-6`}>
-          <Image src={card.image} alt={card.name} width={56} height={56} className='mb-4' />
-          <h3 className='font-semibold mb-2 text-lg md:text-xl'>{card.name}</h3>
-          <p className='text-sm lg:text-[15px] font-light'>{card.paragraph}</p>
+          <Image src={card.image || `${baseURL}${card?.Icon?.data?.attributes.url}`} alt={card.name} width={56} height={56} className='mb-4' />
+          <h3 className='font-semibold mb-2 text-lg md:text-xl'>{card.name || card.Title}</h3>
+          <p className='text-sm lg:text-[15px] font-light'>{card.paragraph || card.Content}</p>
         </div>
       ))}
     </div>

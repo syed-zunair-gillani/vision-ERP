@@ -11,9 +11,9 @@ function TwoColGrid({position, heading, text1, text2, image, link, faqs, buttonT
    
   return (
     <div className='container mx-auto px-4 py-20'>
-       <div className={`grid md:grid-cols-2 items-center gap-5`}>
-       <div className={`${position === 'left' && 'order-2' }`}>
-       <Image src={image} alt='Rehab Fit' width={450} height={650} className=' mx-auto' />
+       <div className={`grid md:grid-cols-2 items-center gap-8`}>
+       <div className={`${position === 'Right' && 'order-2' }`}>
+       <Image src={image} alt='Rehab Fit' width={450} height={650} className='w-[75%] mx-auto' />
         </div>
            <div className='text-[#02153a] mx-auto flex flex-col justify-center items-start'>
               <h2 className='md:leading-[48px] md:text-[42px] text-[25px] font-[700] py-3'>{heading}</h2>
