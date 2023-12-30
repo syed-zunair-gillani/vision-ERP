@@ -9,7 +9,7 @@ function Logo({data}:any) {
         <h2 className='text-2xl lg:text-[42px] font-semibold py-4'>Our Customers</h2>
         <p className='text-base lg:text-[18px] font-normal'>Here are some of the customers we’ve worked with</p>
       </div>
-      <div className='overflow-hidden py-5'>
+      <div className='overflow-hidden py-5 mt-5'>
         <div className='grid gap-5 grid-cols-3 md:grid-cols-7'>
           {
             data?.map((logo:any, idx:number)=>(

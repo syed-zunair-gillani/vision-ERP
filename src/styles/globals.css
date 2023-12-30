@@ -114,3 +114,7 @@ body, html {
 .markdown p{
   margin-bottom: 6px;
 }
+
+.hero span{
+  font-weight: 300;
+}

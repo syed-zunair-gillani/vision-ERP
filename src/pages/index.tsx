@@ -13,7 +13,6 @@ var qs = require('qs');
 
 
 export default function Home({ data }: any) {
-  console.log("🚀 ~ file: index.tsx:13 ~ Home ~ data:", data)
   const { About, Choose_us, Customers, FPA_grid, Partnership, Grid, Hero, Intel_Partnership, Offer_Title, Talent_Management, grid, offer_info } = data
 
   return (
@@ -79,7 +78,7 @@ export default function Home({ data }: any) {
       <Customer data={Customers} />
 
       <section className='container mx-auto px-4'>
-        <div className='bg-[#FFFDF4] w-full h-auto rounded-xl md:px-20 lg:mt-16 mt-10'>
+        <div className='bg-[#FFFDF4] w-full h-auto rounded-[20px] md:px-20 lg:mt-16 mt-10'>
           <TwoColGrid
             position={Partnership.Image_Position}
             heading={Partnership.Title}

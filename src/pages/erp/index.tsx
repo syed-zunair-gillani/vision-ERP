@@ -1,50 +1,70 @@
-import Choose, { cardsData } from '@/components/choose/choose'
+import Choose from '@/components/choose/choose'
 import PageBanner from '@/components/main/pageBanner'
 import TwoColGrid from '@/components/twoColGrid/TwoColGrid'
 import React from 'react'
-import { faqs } from '../products'
-import Request from '@/components/modelbox/request'
+import { GetServerSideProps } from 'next'
+import { Axios } from '@/config/Axios'
+import { baseURL } from '@/const'
+var qs = require('qs');
 
-const ERP = () => {
+
+const ERP = ({ data }: any) => {
+     const { Hero, Cards, Info, Title, ERP_Grid, Grid_2 } = data
+
      return (
           <>
                <PageBanner
-                    title="What is Unit4 ERP?"
-                    description="Unit4 ERP is a comprehensive Enterprise Resource Planning system that can revolutionise the way your organisation manages and optimises its core business functions. It offers a unified and flexible platform that integrates various departments, from finance and HR to supply chain and project management. With Unit4 ERP, you can streamline your operations, enhance efficiency, and gain real-time insights, empowering your organisation to thrive in a rapidly evolving business landscape."
-                    image="/image/pgbanner.png"
-                    buttonText="Learn More"
-                    buttonLink="#"
+                    title={Hero.title}
+                    description={Hero.description}
+                    image={`${baseURL}${Hero.Image.data.attributes.url}`}
+                    buttonText={Hero.Button.Name}
+                    buttonLink={Hero.Button.Link}
                     breadCrum="Product - <span>Unit4 ERP</span>"
                />
                <Choose
-                    title="Why Choose Us"
+                    title={Title}
                     className="my-20"
-                    info="At Vision ERP, we offer more than just solutions; we offer a transformative partnership."
-                    data={cardsData.slice(0, 4)}
+                    info={Info}
+                    data={Cards}
                />
 
                <section className='bg-[#F4FCFF]'>
                     <TwoColGrid
-                         position="right"
-                         heading="Elevate Your Business Operations with Unit4 ERP"
-                         text1="In the dynamic world of business, flexibility, efficiency, and data-driven decision-making are paramount. Vision ERP offers the most robust and versatile Unit4 ERP solutions to streamline your operations and drive growth. With Unit4 ERP, you can:"
-                         image="/image/2.png"
-                         link="#"
-                         faqs={faqs}
+                         position={ERP_Grid.Image_Position}
+                         heading={ERP_Grid.Title}
+                         text1={ERP_Grid?.Content}
+                         image={`${baseURL}${ERP_Grid?.Image?.data?.attributes.url}`}
+                         faqs={ERP_Grid.faq}
                     />
                </section>
-               
+
                <TwoColGrid
-                    position="left"
-                    heading="Empower Your Success with Vision ERP"
-                    text1="At Vision ERP, we help your business succeed by providing tailored Unit4 solutions that meet your specific needs. Our products are designed to empower your organisation to thrive in the ever-changing business landscape."
-                    text2="Get in touch with us today to discover how Vision ERP can be your trusted partner in achieving your business objectives."
-                    image="/image/2.png"
-                    link="#"
-                    buttonText="Contact Us"
+                    position={Grid_2.Image_Position}
+                    heading={Grid_2.Title}
+                    text1={Grid_2?.Content.content}
+                    image={`${baseURL}${Grid_2?.Image?.data?.attributes.url}`}
+                    link={Grid_2.button.Link}
+                    buttonText={Grid_2.button.Name}
                />
           </>
      )
 }
 
 export default ERP
+
+
+export const getServerSideProps: GetServerSideProps = (async () => {
+     const params = qs.stringify({
+          populate: [
+               'Hero.Image', 'Hero.Button',
+               'Cards.Content', 'Cards.Icon', 'Grid.button',
+               'ERP_Grid.Content', 'ERP_Grid.Image', 'ERP_Grid.button', 'ERP_Grid.faq',
+               'Grid_2.Content', 'Grid_2.Image', 'Grid_2.button',
+          ]
+     })
+
+     const erpPage = await Axios.get(`/erp-page?${params}`);
+     const data = erpPage.data?.data?.attributes;
+
+     return { props: { data } }
+})
