@@ -49,7 +49,6 @@ export const cardsData = [
 ];
 
 function Choose({title, info, data, className}:any) {
-  console.log("🚀 ~ file: choose.tsx:52 ~ Choose ~ data:", data)
   return (
     <div className={`container mx-auto px-4 ${className}`}>
     <div className='text-[#02153a] text-center'>
