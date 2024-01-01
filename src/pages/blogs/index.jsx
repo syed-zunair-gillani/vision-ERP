@@ -3,8 +3,9 @@ import BlogBanner from "../../components/main/blogBanner";
 import BlogDesign from "../../components/BlogDesign/BlogDesign";
 import Button from "../../components/UI/button";
 import { IoArrowForward } from "react-icons/io5";
+import { Axios } from '@/config/Axios'
 
-const Blogs = () => {
+const Blogs = ({data}) => {
   return (
     <>
       <BlogBanner title="Latest Blogs & Updates" breadcrum="Blogs" />
@@ -25,3 +26,20 @@ const Blogs = () => {
 };
 
 export default Blogs;
+
+
+// export const getServerSideProps = (async () => {
+//   const params = qs.stringify({
+//        populate: [
+//             'Hero.Image', 'Hero.Button',
+//             'Cards.Content', 'Cards.Icon', 'Grid.button',
+//             'ERP_Grid.Content', 'ERP_Grid.Image', 'ERP_Grid.button', 'ERP_Grid.faq',
+//             'Grid_2.Content', 'Grid_2.Image', 'Grid_2.button',
+//        ]
+//   })
+
+//   const blogs = await Axios.get(`/blog?populate=*`);
+//   const data = blogs.data?.data?.attributes;
+
+//   return { props: { data } }
+// })
