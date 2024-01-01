@@ -3,15 +3,21 @@ import SingleBlogBanner from '../../components/main/singleBlogBanner'
 import Image from 'next/image'
 import AboutMe from '../../components/aboutMe/aboutMe'
 import BlogSlider from '../../components/blogSlider/blogSlider'
+var qs = require("qs");
+import { Axios } from "@/config/Axios";
+import { baseURL } from '@/const'
+import Markdown from 'react-markdown'
 
-const SlugBlog = () => {
+
+const SlugBlog = ({data}) => {
+  console.log("🚀 ~ file: [slug].jsx:11 ~ SlugBlog ~ data:", data)
   return (
     <>
           <SingleBlogBanner
-               title="How AI is giving employees more autonomy over their assignments!"
+               title={data.Title}
           />
           <figure className='container mx-auto px-4 -mt-40'>
-               <Image src="/image/blog-img.png" alt="img" width={1200} height={450} className='rounded-[20px] w-full'/>
+               <Image src={`${baseURL}${data?.Feature_image?.data?.attributes.url}`} alt="img" width={1200} height={450} className='rounded-[20px] w-full'/>
           </figure>
           <div className='container mx-auto flex justify-between px-4 py-4 border-b'>
                <div className='flex items-center gap-1'>
@@ -23,10 +29,11 @@ const SlugBlog = () => {
                     <p>February 20, 2023</p>
                </div>
           </div>
-          <div className='text-[#3F3F3F] container mx-auto px-4 py-5'>
-               <h2 className='font-semibold text-xl md:text-[32px] md:leading-[40px]'>Have you ever wondered what would happen if you let your employees choose their next assignment or role?</h2>
-               <p className='mt-3'>Unit4 solutions have made a real impact in the public sector, helping two police forces save £4 million annually through collaborative finance and HR strategy. The departments were struggling with multiple fragmented and overlapping systems, ranging from duty management, HR and payroll, to performance recording, training, and asset management.<br/> With data locked in silos, the disjointed data delayed decision-making and inhibited change. Unit4’s consolidated record of finance and HR data and process automation helped them deploy the right police resource to the right location, at the right time, with the right skills. Unit4 solutions have made a real impact in the public sector, helping two police forces save £4 million annually through collaborative finance and HR strategy. <br/>The departments were struggling with multiple fragmented and overlapping systems, ranging from duty management, HR and payroll, to performance recording, training, and asset management. With data locked in silos, the disjointed data delayed decision-making and inhibited change. Unit4’s consolidated record of finance and HR data and process automation helped them deploy the right police resource to the right location, at the right time, with the right skills. Unit4 solutions have made a real impact in the public sector, helping two police forces save £4 million annually through collaborative finance and HR strategy. The departments were struggling with multiple fragmented and overlapping systems, ranging from duty management, HR and payroll, to performance recording, training, and asset management.<br/> With data locked in silos, the disjointed data delayed decision-making and inhibited change. Unit4’s consolidated record of finance and HR data and process automation helped them deploy the right police resource to the right location, at the right time, with the right skills. Unit4 solutions have made a real impact in the public sector, helping two police forces save £4 million annually through collaborative finance and HR strategy. The departments were struggling with multiple fragmented and overlapping systems, ranging from duty management, HR and payroll, to performance recording, training, and asset management. With data locked in silos, the disjointed data delayed decision-making and inhibited change. Unit4’s consolidated record of finance and HR data and process automation helped them deploy the right police resource to the right location, at the right time, with the right skills.</p>
+          <div className='text-[#3F3F3F] container mx-auto px-4 py-5 content'>
+               <Markdown >{data.Content}</Markdown>
           </div>
+          
+
           <AboutMe/>
           <BlogSlider/>
     </>
@@ -34,3 +41,19 @@ const SlugBlog = () => {
 }
 
 export default SlugBlog
+
+
+export const getServerSideProps = (async (context) => {
+     const slug = context.query.slug
+     
+     const params = qs.stringify({
+          populate: [
+               'Feature_image',
+          ]
+     })
+
+     const erpPage = await Axios.get(`/blogs/${slug}?${params}`);
+     const data = erpPage.data?.data?.attributes;
+
+     return { props: { data } }
+})

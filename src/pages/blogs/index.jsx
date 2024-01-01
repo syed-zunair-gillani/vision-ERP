@@ -13,7 +13,7 @@ const Blogs = () => {
   useEffect(() => {
     (async function () {
       const params = qs.stringify({
-        populate: ["blogs.attributes.Feature_image"],
+        populate: ["Feature_image"],
       });
       const blogs = await Axios.get(`/blogs?${params}&pagination[page]=${pageNo}&pagination[pageSize]=12`);
       const data = blogs.data?.data;

@@ -1,13 +1,13 @@
+import { baseURL } from '@/const'
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 
 const BlogDesign = ({data}) => {
-  console.log("🚀 ~ file: BlogDesign.jsx:6 ~ BlogDesign ~ data:", data)
   return (
     <article className='shadow2 rounded-[20px] group'>
           <figure >
-               <Image src="/image/blog-img.png" alt="img" width={500} height={350} className='rounded-[20px]'/>
+               <Image src={`${baseURL}${data?.attributes?.Feature_image?.data?.attributes.url}`} alt="img" width={500} height={350} className='rounded-[20px]'/>
           </figure>
           <div className='p-4 px-6'>
                <h2 className='text-[17px] font-semibold text-[#01253A]'><Link href={`/blogs/${data.id}`}>{data.attributes?.Title}</Link></h2>
