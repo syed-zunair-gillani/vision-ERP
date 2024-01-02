@@ -10,7 +10,7 @@ import Markdown from 'react-markdown'
 
 
 const SlugBlog = ({data}) => {
-  console.log("🚀 ~ file: [slug].jsx:11 ~ SlugBlog ~ data:", data)
+
   return (
     <>
           <SingleBlogBanner

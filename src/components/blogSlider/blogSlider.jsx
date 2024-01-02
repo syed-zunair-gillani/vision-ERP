@@ -1,10 +1,25 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Slider from "react-slick";
 import BlogDesign from "../BlogDesign/BlogDesign";
 import { GoArrowRight, GoArrowLeft } from "react-icons/go";
+var qs = require("qs");
+import { Axios } from "@/config/Axios";
+
 
 const BlogSlider = () => {
   const slider = React.useRef(null);
+  const [blogs, setBlogs] = useState();
+   
+     useEffect(() => {
+       (async function () {
+         const params = qs.stringify({
+           populate: ["Feature_image"],
+         });
+         const blogs = await Axios.get(`/blogs?${params}&pagination[page]=1&pagination[pageSize]=8`);
+         const data = blogs.data?.data;
+         setBlogs(data);
+       })();
+     }, []);
 
   return (
     <section className="container mx-auto px-4 md:px-0 mb-10">
@@ -31,7 +46,7 @@ const BlogSlider = () => {
       </div>
       <div className="hidden md:block">
         <Slider ref={slider} {...settings}>
-          {[1, 2, 3, 4, 5, 6, 7].map((item, idx) => {
+          {blogs?.map((item, idx) => {
             return (
               <div key={idx} className="py-10 pt-7">
                 <BlogDesign data={item} />
@@ -41,7 +56,7 @@ const BlogSlider = () => {
         </Slider>
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 md:hidden">
-        {[1, 2, 3, 4, 5, 6, 7].slice(0,4).map((item, idx) => {
+        {blogs?.slice(0,4).map((item, idx) => {
           return (
               <BlogDesign data={item} key={idx}/>
           )
