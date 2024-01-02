@@ -3,40 +3,48 @@ import ChooseCardTwo from '@/components/choose/chooseCardTwo'
 import CloudResources from '@/components/cloudResources/cloudResources'
 import PageBanner from '@/components/main/pageBanner'
 import TwoColGrid from '@/components/twoColGrid/TwoColGrid'
+import { Axios } from '@/config/Axios'
+import { baseURL } from '@/const'
+import { GetServerSideProps } from 'next'
 import React from 'react'
+var qs = require('qs');
 
-const CloudMigration: React.FC<any> = () => {
+
+const CloudMigration: React.FC<any> = ({data}:any) => {
+     console.log("🚀 ~ file: index.tsx:13 ~ data:", data)
+     const { Hero, Cards, Info, Title, ServicesCard, Grid } = data
+
      return (
           <>
                <PageBanner
-                    title="What is Unit4 Cloud Migration?"
-                    description="Unit4 have announced that they are de-supporting their Unit4 ERP on premise solution, this means that all on premise customers must move to Unit4 Cloud by December 31st 2024.If this wasn’t already part of your business plan for 2024, or you are looking for support with the migration to Unit4 Cloud then reach out to us today and we can guide you through the process."
-                    image="/image/pgbanner.png"
-                    buttonText="Get In Touch"
-                    buttonLink="#"
+                    title={Hero.title}
+                    description={Hero.description}
+                    image={`${baseURL}${Hero.Image.data.attributes.url}`}
+                    buttonText={Hero.Button.Name}
+                    buttonLink={Hero.Button.Link}
                     breadCrum="Home - <span>Unit4 Cloud Migration</span>"
                />
 
                <Choose
-                    title="What is DATE December 24?"
-                    info="DATE December 24 is Vision ERP’s cloud migration methodology. It is designed to de-risk your migration and to ensure that your organisation is ready to align to the Unit4 cloud template by December 31st 2024."
-                    data={cardsData.slice(0, 4)}
+                    title={Title}
+                    info={Info}
+                    data={Cards}
                     className="my-20"
                />
 
                <TwoColGrid
-                    position="right"
-                    heading="About Vision ERP"
-                    text1="We have industry specific experts who understand business functionality as well as system functionality. This helps us to understand your issues, as we have probably felt the same pain in previous careers.      "
-                    text2="This enables us to put ourselves in your shoes, experience your frustrations and needs, and develop solutions which are industry specific, and are tailored to work for you      "
-                    image="/image/2.png"
-                    link="#"
+                    position={Grid.Image_Position}
+                    heading={Grid.Title}
+                    text1={Grid?.Content.content}
+                    image={`${baseURL}${Grid?.Image?.data?.attributes.url}`}
+                    link={Grid.button.Link}
+                    buttonText={Grid.button.Name}
                />
 
                <section className='bg-[#F4FCFF] py-1'>
                <ChooseCardTwo
                          title="Our Cloud Service Offerings"
-                         data={cardsData}
+                         data={ServicesCard}
                          className="my-20 !rounded-[20px]"
                          rounded="!rounded-[20px]"
                          badge={true}
@@ -48,3 +56,20 @@ const CloudMigration: React.FC<any> = () => {
 }
 
 export default CloudMigration
+
+
+export const getServerSideProps: GetServerSideProps = (async () => {
+     const params = qs.stringify({
+          populate: [
+               'Hero.Image', 'Hero.Button',
+               'Cards.Content', 'Cards.Icon',
+               'ServicesCard.Content', 'ServicesCard.Icon', 'ServicesCard.Button',
+               'Grid.Content', 'Grid.button', 'Grid.Image'
+          ]
+     })
+
+     const cloudmigrationPage = await Axios.get(`/cloud-migration-page?${params}`);
+     const data = cloudmigrationPage.data?.data?.attributes;
+
+     return { props: { data } }
+})

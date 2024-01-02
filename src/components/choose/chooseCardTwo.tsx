@@ -49,6 +49,7 @@ export const cardsData = [
 ];
 
 function ChooseCardTwo({ title, info, data, className, rounded, badge}: any) {
+  console.log("🚀 ~ file: chooseCardTwo.tsx:52 ~ ChooseCardTwo ~ data:", data)
   return (
     <div className={`container mx-auto px-4 ${className}`}>
       <div className='text-[#02153a] text-center'>
@@ -66,7 +67,7 @@ function ChooseCardTwo({ title, info, data, className, rounded, badge}: any) {
             <div>
               <h3 className='font-semibold mb-2 text-lg -mt-1 md:text-xl flex justify-between gap-2 items-center'>
                 <span>{card.name || card.Title}</span>
-                { badge && <span className='text-xs font-normal p-2 py-1.5 group-hover:text-[#008FD4] bg-[#F4FCFF] rounded-3xl'>{`Timeframe: 3 Weeks`}</span>}
+                { badge && <span className='text-xs font-normal p-2 py-1.5 group-hover:text-[#008FD4] bg-[#F4FCFF] rounded-3xl'>{card?.Button?.Name}</span>}
               </h3>
               <p className='text-sm lg:text-[15px] font-light'>{card.paragraph || card.Content}</p>
             </div>
